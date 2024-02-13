@@ -1,11 +1,10 @@
 {
-  "name": "astro-paper",
+  "name": "",
   "version": "4.2.0",
-  "private": false,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && jampack ./dist",
+    "build": "astro check && astro build && jampack ./dist",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -16,7 +15,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.4.1",
+    "@astrojs/check": "^0.5.2",
     "@astrojs/rss": "^4.0.2",
     "@resvg/resvg-js": "^2.6.0",
     "astro": "^4.2.1",
