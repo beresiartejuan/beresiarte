@@ -55,9 +55,13 @@ const json_phrase: Phrase = await res_phrase.json();
         </svg>
         <span class="sr-only">RSS Feed</span>
       </a>
-      <p class="text-[1.1rem]" id="phrase">
-        "{json_phrase.quoteText}" - {json_phrase.quoteAuthor}
+      <p class="text-[1.1rem]">
+        Desarrollador web, escritor y amante del té 🧉❤️
       </p>
+
+      <div class="my-6 inline-block">
+        <cite>{json_phrase.quoteText.trim()} - {json_phrase.quoteAuthor}</cite>
+      </div>
 
       <!-- <p>
         AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
