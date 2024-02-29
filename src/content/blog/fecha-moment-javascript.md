@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - javascript
+  - librerias
 description: Descubre cómo usar Moment.js para manejar fechas en JavaScript. Explora cómo esta librería simplifica tareas comunes de manipulación de fechas.
 ---
 
