@@ -1,0 +1,190 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import { SOCIALS } from "@config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
+---
+
+<Layout>
+  <Header />
+  <main id="main-content">
+    <section id="hero">
+      <h1>Juan Beresiarte</h1>
+      <a
+        target="_blank"
+        href="/rss.xml"
+        class="rss-link"
+        aria-label="rss feed"
+        title="RSS Feed"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+          ><path
+            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+          ></path><path
+            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+          ></path><circle cx="6" cy="18" r="2"></circle>
+        </svg>
+        <span class="sr-only">RSS Feed</span>
+      </a>
+      <p class="text-[1.1rem]">
+        Desarrollador web, escritor y amante del té 🧉❤️
+      </p>
+
+      <div class="my-6 inline-block">
+        <cite
+          >Belief consists in accepting the affirmations of the soul; Unbelief,
+          in denying them. - Ralph Emerson</cite
+        >
+      </div>
+
+      {
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <div class="social-links">Redes Sociales:</div>
+            <Socials />
+          </div>
+        )
+      }
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="text-2xl font-medium underline">Proyectos</h2>
+
+      <ul class="flex flex-col gap-5 my-8">
+        <li
+          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+        >
+          <h3 class="text-xl font-medium decoration-dashed">Typing Check</h3>
+          <span
+            >Un test de mecanografía que usa frases del Don Quijote.
+            Desarrollado con React y TailwindCSS.</span
+          >
+          <div class="flex flex-row flex-wrap items-center gap-2">
+            <a
+              href="https://beresiartejuan.github.io/typing-check/"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [🔗 Published!]
+            </a>
+            <a
+              href="https://github.com/beresiartejuan/typing-check"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [📦 Repo]
+            </a>
+          </div>
+        </li>
+        <li
+          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+        >
+          <h3 class="text-xl font-medium decoration-dashed">
+            My Simple Todo List
+          </h3>
+          <span
+            >Una lista de tareas con un diseño limpio y sencillo. Facíl de usar.
+            Desarrollada con React y Material Tailwind.</span
+          >
+          <div class="flex flex-row flex-wrap items-center gap-2">
+            <a
+              href="https://mysimpletodolist.vercel.app/"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [🔗 Published!]
+            </a>
+            <a
+              href="https://github.com/beresiartejuan/MyTasks"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [📦 Repo]
+            </a>
+          </div>
+        </li>
+        <li
+          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+        >
+          <h3 class="text-xl font-medium decoration-dashed">I Love Penguins</h3>
+          <span
+            >LandingPage sobre pingüinos. Desarrollada con HTML, CSS y
+            Javascript Vanilla.</span
+          >
+          <div class="flex flex-row flex-wrap items-center gap-2">
+            <a
+              href="https://ilovepenguin.000webhostapp.com/"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [🔗 Published!]
+            </a>
+            <a
+              href="https://github.com/beresiartejuan/ilovepenguins"
+              target="_blank"
+              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+            >
+              [📦 Repo]
+            </a>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero .rss-icon {
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>

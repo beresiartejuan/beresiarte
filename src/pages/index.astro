@@ -17,21 +17,6 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
-
-const res_phrase = await fetch(
-  "https://api.forismatic.com/api/1.0/?method=getQuote&&format=json&lang=en",
-  {
-    method: "GET",
-  }
-);
-
-interface Phrase {
-  quoteText: string;
-  quoteAuthor: string;
-  quoteLink: string;
-}
-
-const json_phrase: Phrase = await res_phrase.json();
 ---
 
 <Layout>
@@ -60,7 +45,10 @@ const json_phrase: Phrase = await res_phrase.json();
       </p>
 
       <div class="my-6 inline-block">
-        <cite>{json_phrase.quoteText.trim()} - {json_phrase.quoteAuthor}</cite>
+        <cite
+          >Belief consists in accepting the affirmations of the soul; Unbelief,
+          in denying them. - Ralph Emerson</cite
+        >
       </div>
 
       <!-- <p>

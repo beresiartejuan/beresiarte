@@ -14,7 +14,7 @@ const { activeNav } = Astro.props;
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo whitespace-nowrap">
+      <a href="/" class="logo whitespace-nowrap underline">
         {
           LOGO_IMAGE.enable ? (
             <img
@@ -24,7 +24,7 @@ const { activeNav } = Astro.props;
               height={LOGO_IMAGE.height}
             />
           ) : (
-            SITE.title
+            `${SITE.title}`
           )
         }
       </a>
@@ -66,9 +66,7 @@ const { activeNav } = Astro.props;
             </a>
           </li>
           <li>
-            <a href="https://beresiartejuan.vercel.app" target="_blank">
-              Portafolio
-            </a>
+            <a href="/me"> Portafolio </a>
           </li>
           <li>
             <LinkButton
