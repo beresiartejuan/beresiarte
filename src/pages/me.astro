@@ -61,14 +61,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       }
     </section>
 
-    <Hr />
+    <section class="projects my-10">
+      <h2 class="text-3xl font-medium underline">Proyectos</h2>
 
-    <section>
-      <h2 class="text-2xl font-medium underline">Proyectos</h2>
-
-      <ul class="flex flex-col gap-5 my-8">
+      <ul>
         <li
-          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
         >
           <h3 class="text-xl font-medium decoration-dashed">Typing Check</h3>
           <span
@@ -79,21 +77,19 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             <a
               href="https://beresiartejuan.github.io/typing-check/"
               target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
             >
               [🔗 Published!]
             </a>
             <a
               href="https://github.com/beresiartejuan/typing-check"
               target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
             >
               [📦 Repo]
             </a>
           </div>
         </li>
         <li
-          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
         >
           <h3 class="text-xl font-medium decoration-dashed">
             My Simple Todo List
@@ -103,24 +99,16 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             Desarrollada con React y Material Tailwind.</span
           >
           <div class="flex flex-row flex-wrap items-center gap-2">
-            <a
-              href="https://mysimpletodolist.vercel.app/"
-              target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-            >
+            <a href="https://mysimpletodolist.vercel.app/" target="_blank">
               [🔗 Published!]
             </a>
-            <a
-              href="https://github.com/beresiartejuan/MyTasks"
-              target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-            >
+            <a href="https://github.com/beresiartejuan/MyTasks" target="_blank">
               [📦 Repo]
             </a>
           </div>
         </li>
         <li
-          class="flex flex-col text-left gap-2 pl-4 py-2 border-l-4 border-l-sky-600 border-l-solid"
+          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
         >
           <h3 class="text-xl font-medium decoration-dashed">I Love Penguins</h3>
           <span
@@ -128,17 +116,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             Javascript Vanilla.</span
           >
           <div class="flex flex-row flex-wrap items-center gap-2">
-            <a
-              href="https://ilovepenguin.000webhostapp.com/"
-              target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-            >
+            <a href="https://ilovepenguin.000webhostapp.com/" target="_blank">
               [🔗 Published!]
             </a>
             <a
               href="https://github.com/beresiartejuan/ilovepenguins"
               target="_blank"
-              class="inline-block text-md font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
             >
               [📦 Repo]
             </a>
@@ -152,6 +135,18 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 </Layout>
 
 <style>
+  .projects ul {
+    @apply flex flex-col gap-6 my-8;
+  }
+
+  .projects li {
+    @apply flex flex-col text-left gap-2 pl-4 py-2;
+  }
+
+  .projects li a {
+    @apply inline-block font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0;
+  }
+
   /* ===== Hero Section ===== */
   #hero {
     @apply pb-6 pt-8;
