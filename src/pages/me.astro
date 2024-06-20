@@ -45,10 +45,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </p>
 
       <div class="my-6 inline-block">
-        <cite
-          >Belief consists in accepting the affirmations of the soul; Unbelief,
-          in denying them. - Ralph Emerson</cite
-        >
+        <cite>
+          Belief consists in accepting the affirmations of the soul; Unbelief,
+          in denying them. - Ralph Emerson
+        </cite>
       </div>
 
       {
@@ -84,7 +84,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
       <ul>
         <li
-          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
+          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
         >
           <h3 class="text-xl font-medium decoration-dashed">Typing Check</h3>
           <span
@@ -107,7 +107,23 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </div>
         </li>
         <li
-          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
+          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
+        >
+          <h3 class="text-xl font-medium decoration-dashed">Just</h3>
+          <span>
+            Editor de texto sencillo y rapido para tomar notas rápidas.
+          </span>
+          <div class="flex flex-row flex-wrap items-center gap-2">
+            <a href="https://just-gray.vercel.app/" target="_blank">
+              [🔗 Published!]
+            </a>
+            <a href="https://github.com/beresiartejuan/just" target="_blank">
+              [📦 Repo]
+            </a>
+          </div>
+        </li>
+        <li
+          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
         >
           <h3 class="text-xl font-medium decoration-dashed">
             My Simple Todo List
@@ -126,7 +142,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </div>
         </li>
         <li
-          class="border-l-4 border-l-solid border-l-[color:var(--textColor)] rounded"
+          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
         >
           <h3 class="text-xl font-medium decoration-dashed">I Love Penguins</h3>
           <span
@@ -154,11 +170,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <style>
   .projects ul {
-    @apply flex flex-col gap-6 my-8;
+    @apply my-8 flex flex-col gap-6;
   }
 
   .projects li {
-    @apply flex flex-col text-left gap-2 pl-4 py-2;
+    @apply flex flex-col gap-2 py-2 pl-4 text-left;
   }
 
   .projects li a {
