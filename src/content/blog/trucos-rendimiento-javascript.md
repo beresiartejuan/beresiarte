@@ -3,7 +3,7 @@ author: Juan Beresiarte
 pubDatetime: 2024-02-10T15:22:00Z
 title: 5 trucos para optimizar el rendimiento en Javascript
 slug: cinco-trucos-rendimiento-javascript
-featured: true
+featured: false
 draft: false
 tags:
   - consejos
