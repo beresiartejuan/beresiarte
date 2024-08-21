@@ -17,3 +17,10 @@ export type SocialObjects = {
   active: boolean;
   linkTitle: string;
 }[];
+
+export type ProjectsObject = {
+  name: string;
+  description: string;
+  repo: string;
+  link: string;
+}[];

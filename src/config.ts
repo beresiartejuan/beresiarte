@@ -1,4 +1,4 @@
-import type { Site, SocialObjects } from "./types";
+import type { Site, SocialObjects, ProjectsObject } from "./types";
 
 export const SITE: Site = {
   website: "https://beresiarte.vercel.app", // replace this with your deployed domain
@@ -7,7 +7,7 @@ export const SITE: Site = {
   title: "Beresiarte",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerPage: 4,
+  postPerPage: 10,
   scheduledPostMargin: 17 * 60 * 1000, // 15 minutes
 };
 
@@ -53,5 +53,34 @@ export const SOCIALS: SocialObjects = [
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Pinterest`,
     active: false,
+  },
+];
+
+export const PROJECTS: ProjectsObject = [
+  {
+    name: "Fancy Clock",
+    repo: "https://github.com/beresiartejuan/fancy-clock",
+    link: "https://fancy-clock.vercel.app/",
+    description: "Cronometro y reloj minimalistas.",
+  },
+  {
+    name: "Typing Check",
+    repo: "https://github.com/beresiartejuan/typing-check",
+    link: "https://beresiartejuan.github.io/typing-check/",
+    description:
+      "Un test de mecanografía que usa frases del Don Quijote. Desarrollado con React y TailwindCSS.",
+  },
+  {
+    name: "My Simple Todo List",
+    repo: "https://github.com/beresiartejuan/MyTasks",
+    link: "https://mysimpletodolist.vercel.app/",
+    description:
+      "Una lista de tareas con un diseño limpio y sencillo.Facíl de usar. Desarrollada con React y Material Tailwind.",
+  },
+  {
+    name: "Just",
+    description: "Editor de texto sencillo y limpio para tomar notas rápidas.",
+    link: "https://just-editor.vercel.app/",
+    repo: "https://github.com/beresiartejuan/just",
   },
 ];

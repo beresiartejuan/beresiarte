@@ -8,7 +8,7 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import { SOCIALS } from "@config";
+import { SOCIALS, PROJECTS } from "@config";
 
 const posts = await getCollection("blog");
 
@@ -71,149 +71,82 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         React, NextJS, ect...).
       </p>
 
-      <p class="leading-8">
-        Hey! I'm a <mark><b>developer</b></mark> from Argentina, and my name is Juan.
-        I'm into most of the tech out there, but I usually code a lot with <mark
-          ><b>JavaScript</b></mark
-        > and its ecosystem (Node, TypeScript, React, NextJS, etc.).
-      </p>
+      <section class="projects my-10 -ml-4">
+        <h2 class="text-3xl font-medium underline">Proyectos</h2>
+
+        <ul>
+          {
+            PROJECTS.map(project => (
+              <li class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]">
+                <h3 class="text-xl font-medium decoration-dashed">
+                  {project.name}
+                </h3>
+                <span>{project.description}</span>
+                <div class="flex flex-row flex-wrap items-center gap-2">
+                  <a href={project.link} target="_blank">
+                    [🔗 Published!]
+                  </a>
+                  <a href={project.repo} target="_blank">
+                    [📦 Repo]
+                  </a>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
     </section>
 
-    <section class="projects my-10">
-      <h2 class="text-3xl font-medium underline">Proyectos</h2>
-
-      <ul>
-        <li
-          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
-        >
-          <h3 class="text-xl font-medium decoration-dashed">Typing Check</h3>
-          <span
-            >Un test de mecanografía que usa frases del Don Quijote.
-            Desarrollado con React y TailwindCSS.</span
-          >
-          <div class="flex flex-row flex-wrap items-center gap-2">
-            <a
-              href="https://beresiartejuan.github.io/typing-check/"
-              target="_blank"
-            >
-              [🔗 Published!]
-            </a>
-            <a
-              href="https://github.com/beresiartejuan/typing-check"
-              target="_blank"
-            >
-              [📦 Repo]
-            </a>
-          </div>
-        </li>
-        <li
-          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
-        >
-          <h3 class="text-xl font-medium decoration-dashed">Just</h3>
-          <span>
-            Editor de texto sencillo y limpio para tomar notas rápidas.
-          </span>
-          <div class="flex flex-row flex-wrap items-center gap-2">
-            <a href="https://just-editor.vercel.app/" target="_blank">
-              [🔗 Published!]
-            </a>
-            <a href="https://github.com/beresiartejuan/just" target="_blank">
-              [📦 Repo]
-            </a>
-          </div>
-        </li>
-        <li
-          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
-        >
-          <h3 class="text-xl font-medium decoration-dashed">
-            My Simple Todo List
-          </h3>
-          <span
-            >Una lista de tareas con un diseño limpio y sencillo. Facíl de usar.
-            Desarrollada con React y Material Tailwind.</span
-          >
-          <div class="flex flex-row flex-wrap items-center gap-2">
-            <a href="https://mysimpletodolist.vercel.app/" target="_blank">
-              [🔗 Published!]
-            </a>
-            <a href="https://github.com/beresiartejuan/MyTasks" target="_blank">
-              [📦 Repo]
-            </a>
-          </div>
-        </li>
-        <li
-          class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]"
-        >
-          <h3 class="text-xl font-medium decoration-dashed">I Love Penguins</h3>
-          <span
-            >LandingPage sobre pingüinos. Desarrollada con HTML, CSS y
-            Javascript Vanilla.</span
-          >
-          <div class="flex flex-row flex-wrap items-center gap-2">
-            <a href="https://ilovepenguin.000webhostapp.com/" target="_blank">
-              [🔗 Published!]
-            </a>
-            <a
-              href="https://github.com/beresiartejuan/ilovepenguins"
-              target="_blank"
-            >
-              [📦 Repo]
-            </a>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <Footer />
   </main>
 
-  <Footer />
+  <style>
+    .projects ul {
+      @apply my-8 flex flex-col gap-6;
+    }
+
+    .projects li {
+      @apply flex flex-col gap-2 py-2 pl-4 text-left;
+    }
+
+    .projects li a {
+      @apply inline-block font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0;
+    }
+
+    /* ===== Hero Section ===== */
+    #hero {
+      @apply pb-6 pt-8;
+    }
+    #hero h1 {
+      @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+    }
+    #hero .rss-link {
+      @apply mb-6;
+    }
+    #hero .rss-icon {
+      @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+    }
+    #hero p {
+      @apply my-2;
+    }
+    .social-wrapper {
+      @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+    }
+    .social-links {
+      @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+    }
+
+    /* ===== Featured & Recent Posts Sections ===== */
+    #featured,
+    #recent-posts {
+      @apply pb-6 pt-12;
+    }
+    #featured h2,
+    #recent-posts h2 {
+      @apply text-2xl font-semibold tracking-wide;
+    }
+    .all-posts-btn-wrapper {
+      @apply my-8 text-center;
+    }
+  </style>
 </Layout>
-
-<style>
-  .projects ul {
-    @apply my-8 flex flex-col gap-6;
-  }
-
-  .projects li {
-    @apply flex flex-col gap-2 py-2 pl-4 text-left;
-  }
-
-  .projects li a {
-    @apply inline-block font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0;
-  }
-
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pb-6 pt-8;
-  }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-  #hero .rss-link {
-    @apply mb-6;
-  }
-  #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
-  }
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply pb-6 pt-12;
-  }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
-  }
-</style>
