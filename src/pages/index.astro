@@ -21,7 +21,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main-content">
+  <main id="main-content" class="text-center">
     <section id="hero">
       <h1>Juan Beresiarte</h1>
       <a
@@ -44,26 +44,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         Desarrollador web, escritor y amante del té 🧉❤️
       </p>
 
-      <div class="my-6 inline-block">
-        <cite
-          >Belief consists in accepting the affirmations of the soul; Unbelief,
-          in denying them. - Ralph Emerson</cite
-        >
-      </div>
-
-      <!-- <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p> -->
-
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">Redes Sociales:</div>
-            <Socials />
+          <div class="social-wrapper mx-auto max-w-fit text-center">
+            <Socials centered />
           </div>
         )
       }
