@@ -1,20 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
-import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS, PROJECTS } from "@config";
-
-const posts = await getCollection("blog");
-
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -23,31 +12,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
+      <img
+        src="/profile_photo.jpeg"
+        alt="Profile picture"
+        class="h-auto w-64 rounded-lg transition-all duration-500 sm:hover:w-[50%]"
+      />
       <h1>Juan Beresiarte</h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-        <span class="sr-only">RSS Feed</span>
-      </a>
-      <p class="text-[1.1rem]">
-        Desarrollador web, escritor y amante del té 🧉❤️
-      </p>
+      <p class="text-[1.1rem]">Desarrollador Web</p>
 
       <div class="my-6 inline-block">
         <cite>
-          Belief consists in accepting the affirmations of the soul; Unbelief,
-          in denying them. - Ralph Emerson
+          "El mejor modo de predecir el futuro es inventarlo." - Alan Kay
         </cite>
       </div>
 
@@ -61,17 +36,59 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       }
     </section>
 
-    <section class="flex flex-col flex-wrap gap-5">
-      <h2 class="text-3xl font-medium underline">Sobre mí</h2>
+    <section class="flex max-w-4xl flex-col flex-wrap gap-5">
+      <h2 class="text-3xl font-medium underline">¿Quien soy?</h2>
 
       <p class="leading-8">
-        Hola! Soy un <mark><b>desarrollador</b></mark> Argentino y mi nombre es Juan.
-        Me gustan casi todas las tecnologias actuales, aunque suelo programar mucho
-        usando <mark><b>Javascript</b></mark> y su ecosistema (Node, Typescript,
-        React, NextJS, ect...).
+        Hola! mi nombre es Juan y soy un desarrollador Argentino. Mi historia en
+        el mundo tech comenzó de forma atípica: cambié Windows por Kali Linux
+        siendo muy chico porque quería ser hacker como en las películas. Esa
+        curiosidad me llevó a explorar de forma autodidacta todo lo que pude
+        sobre informática. Aprendí <b>Bash</b>, <b>Python</b>, administración en
+        <b>Linux</b>, y con el tiempo esa exploración se convirtió en una pasión
+        más concreta: el desarrollo web.
       </p>
 
-      <section class="projects my-10 -ml-4">
+      <p class="leading-8">
+        Hoy soy desarrollador web fullstack con una fuerte orientación al
+        frontend, aunque disfruto manejar todo el ciclo de una app. Me considero
+        una persona metódica y creativa, con una necesidad constante de
+        aprender, mejorar y mantener mis proyectos con vida.
+      </p>
+
+      <h2 class="text-3xl font-medium underline">
+        Mis herramientas preferidas
+      </h2>
+
+      <p class="leading-8">
+        Trabajo principalmente con JavaScript, lenguaje con el que me siento
+        extremadamente cómodo en cualquier contexto. Mi stack usual incluye:
+      </p>
+
+      <ul class="list-disc pl-6">
+        <li>
+          <b>Astro:</b> ideal para sitios simples, rápidos y eficientes.
+        </li>
+        <li>
+          <b>React:</b> me gusta mantener el control total del proyecto sin dependencias
+          innecesarias.
+        </li>
+        <li>
+          <b>Tailwind:</b> me permite prototipar rápido, aunque no tengo problemas
+          en escribir CSS puro cuando hace falta.
+        </li>
+        <li><b>Express:</b> para APIs simples, directo y sin vueltas.</li>
+        <li>
+          <b>NestJS:</b> cuando el proyecto escala y necesito algo más robusto.
+        </li>
+      </ul>
+
+      <p class="leading-8">
+        En este momento estoy aprendiendo Rust, atraído por su diseño a nivel
+        bajo, sus garantías de seguridad y su potencia.
+      </p>
+
+      <section class="projects my-4 -ml-4 max-w-4xl">
         <h2 class="text-3xl font-medium underline">Proyectos</h2>
 
         <ul>
@@ -115,10 +132,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     /* ===== Hero Section ===== */
     #hero {
-      @apply pb-6 pt-8;
+      @apply max-w-4xl pb-6 pt-8;
     }
     #hero h1 {
-      @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+      @apply mb-0 mt-8 inline-block text-3xl font-bold sm:text-5xl;
     }
     #hero .rss-link {
       @apply mb-6;
