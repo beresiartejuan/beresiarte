@@ -60,17 +60,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         proyectos.
       </p>
 
-      <section class="projects my-4 max-w-4xl !p-0">
+      <section class="projects my-8 max-w-4xl !p-0">
         <h2 class="text-3xl font-medium underline">Experiencia</h2>
 
         <ul>
           {
             EXPERIENCE.map(project => (
               <li class="">
-                <span class="text-lg font-bold text-skin-accent">
+                <span class="text-lg font-thin text-skin-accent">
                   [{project.date}]
                 </span>
-                <h3 class="text-xl font-medium decoration-dashed">
+                <h3 class="text-xl font-bold decoration-dashed">
                   {project.name} - {project.rol}
                 </h3>
                 <p class="leading-7">{project.description}</p>
@@ -81,12 +81,28 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </section>
     </section>
 
+    <section class="my-14 text-center">
+      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">
+        ¿Te gustó lo que viste?
+      </h2>
+      <p class="mb-6 text-sm sm:text-base">
+        Estoy buscando trabajo como desarrollador web. Si tenés una propuesta o
+        querés sumarme a tu equipo, escribime y charlamos.
+      </p>
+      <a
+        href="mailto:juan@ejemplo.com"
+        class="inline-block rounded-lg bg-skin-accent px-6 py-3 font-bold"
+      >
+        📩 Contactame
+      </a>
+    </section>
+
     <Footer />
   </main>
 
   <style>
     .projects ul {
-      @apply my-8 flex flex-col gap-6;
+      @apply my-8 flex flex-col gap-12;
     }
 
     .projects li {
