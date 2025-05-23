@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Socials from "@components/Socials.astro";
-import { SOCIALS, PROJECTS } from "@config";
+import { SOCIALS, EXPERIENCE } from "@config";
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -40,73 +40,40 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       <h2 class="text-3xl font-medium underline">¿Quien soy?</h2>
 
       <p class="leading-8">
-        Hola! mi nombre es Juan y soy un desarrollador Argentino. Mi historia en
-        el mundo tech comenzó de forma atípica: cambié Windows por Kali Linux
-        siendo muy chico porque quería ser hacker como en las películas. Esa
-        curiosidad me llevó a explorar de forma autodidacta todo lo que pude
-        sobre informática. Aprendí <b>Bash</b>, <b>Python</b>, administración en
-        <b>Linux</b>, y con el tiempo esa exploración se convirtió en una pasión
-        más concreta: el desarrollo web.
+        ¡Hola! Soy Juan, un desarrollador argentino con mucho entusiasmo por la
+        tecnología.
       </p>
 
       <p class="leading-8">
-        Hoy soy desarrollador web fullstack con una fuerte orientación al
-        frontend, aunque disfruto manejar todo el ciclo de una app. Me considero
-        una persona metódica y creativa, con una necesidad constante de
-        aprender, mejorar y mantener mis proyectos con vida.
+        Empecé desde chico explorando el mundo de la informática por curiosidad.
+        Cambié Windows por Kali Linux porque me llamaba la atención todo lo
+        relacionado con la seguridad informática. Eso me llevó a aprender Bash,
+        Python y administración de sistemas Linux de forma autodidacta. Con el
+        tiempo, descubrí que lo que más disfrutaba era crear cosas para la web.
       </p>
-
-      <h2 class="text-3xl font-medium underline">
-        Mis herramientas preferidas
-      </h2>
 
       <p class="leading-8">
-        Trabajo principalmente con JavaScript, lenguaje con el que me siento
-        extremadamente cómodo en cualquier contexto. Mi stack usual incluye:
+        Hoy soy desarrollador web fullstack, con una fuerte orientación al
+        frontend, aunque también me gusta trabajar en todo el ciclo de
+        desarrollo de una app. Me considero metódico y creativo, siempre con
+        ganas de seguir aprendiendo, mejorando y manteniendo vivos mis
+        proyectos.
       </p>
 
-      <ul class="list-disc pl-6">
-        <li>
-          <b>Astro:</b> ideal para sitios simples, rápidos y eficientes.
-        </li>
-        <li>
-          <b>React:</b> me gusta mantener el control total del proyecto sin dependencias
-          innecesarias.
-        </li>
-        <li>
-          <b>Tailwind:</b> me permite prototipar rápido, aunque no tengo problemas
-          en escribir CSS puro cuando hace falta.
-        </li>
-        <li><b>Express:</b> para APIs simples, directo y sin vueltas.</li>
-        <li>
-          <b>NestJS:</b> cuando el proyecto escala y necesito algo más robusto.
-        </li>
-      </ul>
-
-      <p class="leading-8">
-        En este momento estoy aprendiendo Rust, atraído por su diseño a nivel
-        bajo, sus garantías de seguridad y su potencia.
-      </p>
-
-      <section class="projects my-4 -ml-4 max-w-4xl">
-        <h2 class="text-3xl font-medium underline">Proyectos</h2>
+      <section class="projects my-4 max-w-4xl !p-0">
+        <h2 class="text-3xl font-medium underline">Experiencia</h2>
 
         <ul>
           {
-            PROJECTS.map(project => (
-              <li class="border-l-solid rounded border-l-4 border-l-[color:var(--textColor)]">
+            EXPERIENCE.map(project => (
+              <li class="">
+                <span class="text-lg font-bold text-skin-accent">
+                  [{project.date}]
+                </span>
                 <h3 class="text-xl font-medium decoration-dashed">
-                  {project.name}
+                  {project.name} - {project.rol}
                 </h3>
-                <span>{project.description}</span>
-                <div class="flex flex-row flex-wrap items-center gap-2">
-                  <a href={project.link} target="_blank">
-                    [🔗 Published!]
-                  </a>
-                  <a href={project.repo} target="_blank">
-                    [📦 Repo]
-                  </a>
-                </div>
+                <p class="leading-7">{project.description}</p>
               </li>
             ))
           }
@@ -123,11 +90,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     .projects li {
-      @apply flex flex-col gap-2 py-2 pl-4 text-left;
-    }
-
-    .projects li a {
-      @apply inline-block font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0;
+      @apply flex flex-col gap-2 py-2 text-left;
     }
 
     /* ===== Hero Section ===== */
