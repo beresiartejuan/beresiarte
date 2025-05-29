@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Socials from "@components/Socials.astro";
-import { SOCIALS, EXPERIENCE } from "@config";
+import { SOCIALS, EXPERIENCE, PROJECTS } from "@config";
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -60,12 +60,31 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         proyectos.
       </p>
 
-      <section class="projects my-8 max-w-4xl !p-0">
+      <section class="projects mt-8 max-w-4xl !p-0">
         <h2 class="text-3xl font-medium underline">Experiencia</h2>
 
         <ul>
           {
             EXPERIENCE.map(project => (
+              <li class="">
+                <span class="text-lg font-thin text-skin-accent">
+                  [{project.date}]
+                </span>
+                <h3 class="text-xl font-bold decoration-dashed">
+                  {project.name} - {project.rol}
+                </h3>
+                <p class="leading-7">{project.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section class="projects my-8 max-w-4xl !p-0">
+        <h2 class="text-3xl font-medium underline">Proyectos</h2>
+
+        <ul>
+          {
+            PROJECTS.map(project => (
               <li class="">
                 <span class="text-lg font-thin text-skin-accent">
                   [{project.date}]
@@ -90,7 +109,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         querés sumarme a tu equipo, escribime y charlamos.
       </p>
       <a
-        href="mailto:juan@ejemplo.com"
+        href="mailto:juanberesiarte@gmail.com"
         class="inline-block rounded-lg bg-skin-accent px-6 py-3 font-bold"
       >
         📩 Contactame
