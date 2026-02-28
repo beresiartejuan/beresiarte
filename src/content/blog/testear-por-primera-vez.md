@@ -1,6 +1,6 @@
 ---
 author: Juan Beresiarte
-pubDatetime: 2025-02-28T19:34:20Z
+pubDatetime: 2026-02-28T19:34:20Z
 title: Hacer testing por primera vez sin morir en el intento
 slug: testing-sin-morir-en-el-intento
 featured: false
@@ -9,52 +9,52 @@ tags:
   - javascript
   - librerias
   - testing
-description: 
+description: Una guía práctica para escribir tu primer test en JavaScript con Vitest, sin experiencia previa en testing.
 ---
 
-## Introducción: el bicho raro del desarrollo
+## Por qué deberías leer esto
 
 Cuando empecé a programar, había una palabra que aparecía en todas las ofertas de trabajo, en todos los tutoriales avanzados y en todas las conversaciones de developers más experimentados: **testing**.
 
 Y cada vez que la escuchaba, hacía lo mismo: la ignoraba.
 
-No porque no quisiera aprender, sino porque sonaba complicado, aburrido y, sobre todo, *opcional*. Yo quería construir cosas, ver resultados, hacer que los botones funcionaran. ¿Escribir código para probar mi código? Me parecía una pérdida de tiempo.
+No porque no quisiera aprender, sino porque sonaba complicado, aburrido y, sobre todo, _opcional_. Yo quería construir cosas, ver resultados, hacer que los botones funcionaran. ¿Escribir código para probar mi código? Me parecía una pérdida de tiempo.
 
-El día que tuve que modificar una función que "funcionaba perfectamente" y sin querer rompí otras tres partes de la aplicación, entendí para qué sirve el testing. Y cuando finalmente me senté a aprenderlo, descubrí algo que nadie me había dicho: no es tan difícil como parece.
+Hasta que un día tuve que modificar una función que "funcionaba perfectamente" y sin querer rompí otras tres partes de la aplicación. Ahí entendí para qué sirve el testing. Y cuando finalmente me senté a aprenderlo, descubrí algo que nadie me había dicho: no es tan difícil como parece.
 
-Este artículo es lo que me hubiera gustado leer ese día.
+Este artículo es lo que me hubiera gustado leer ese día. Y no importa si estás construyendo un proyecto grande o un script personal: escribir tests te va a ahorrar bugs tontos y dolores de cabeza.
 
 ---
 
-## ¿Qué es un test? La pregunta con respuesta esperada
+## ¿Qué es un test?
 
 Un test es, en su forma más simple, una **pregunta con una respuesta esperada**.
 
 Cuando terminamos de cocinar, probamos la comida antes de servirla. Un test en programación hace exactamente eso: verifica que, dado cierto input, el código devuelva el output correcto.
 
-La diferencia con probarlo a mano en el navegador es que el test se puede correr **cientos de veces, en segundos, de forma automática**. Cada vez que cambiamos algo, los tests se ejecutan y nos avisan si rompimos algo sin darnos cuenta.
+La diferencia con probarlo a mano en el navegador es que el test se puede correr **cientos de veces, en segundos, de forma automática**. Pensalo como un checklist automático que revisa todo por vos cada vez que cambiás algo. Si rompiste algo sin darte cuenta, el test te avisa.
 
 ---
 
-## Los dos tipos de testing que necesitás conocer al principio
+## Tipos de testing: los dos que importan al principio
 
-### 1. Unit Testing — Probando una pieza a la vez
+### Unit Testing — Una pieza a la vez
 
-Probamos **una sola unidad de código** de forma aislada: una función, un componente, una operación concreta. Es el tipo de test más común cuando comenzamos y el más accesible de escribir.
+Probamos **una sola unidad de código** de forma aislada: una función, un componente, una operación concreta. "Aislada" significa que la probamos sin depender de otras partes del sistema — no necesitamos una base de datos, una API ni otros módulos para que el test funcione. Es el tipo de test más común para empezar y el más accesible de escribir.
 
-### 2. Integration Testing — Probando que todo encaje junto
+### Integration Testing — Todo junto
 
 Verificamos que **varias piezas funcionen bien en conjunto**. Es un poco más complejo porque involucra más partes del sistema, pero no hace falta preocuparse por esto todavía.
 
-> 💡 **Una guía simple para empezar:** si una función hace una cosa concreta y devuelve un resultado, es candidata a una unit test. Cuando dos o más partes del sistema colaboran, pensemos en una integration test.
+> 💡 Si una función hace una cosa concreta y devuelve un resultado, es candidata a una unit test. Cuando dos o más partes del sistema colaboran, pensemos en una integration test.
 
 ---
 
-## Ejemplo práctico: tu primer test de verdad
+## Manos al código: tu primer test
 
-Suficiente teoría. Vamos al código.
+Suficiente teoría. Vamos a escribir un test real, paso a paso.
 
-### La función que vamos a testear
+### 1. La función que vamos a testear
 
 ```javascript
 // math.js
@@ -65,15 +65,15 @@ function sumar(a, b) {
 export { sumar };
 ```
 
-Usaremos **Vitest**, un framework moderno muy popular en proyectos con Vite.
+### 2. Instalar Vitest
 
-### Instalación
+Usaremos **Vitest**, un framework de testing moderno y muy popular en proyectos con Vite. Existen alternativas como **Jest** o **Mocha**, pero Vitest tiene una configuración mínima y una API muy parecida a Jest, así que lo aprendido acá es transferible.
 
 ```bash
 npm install -D vitest
 ```
 
-En el `package.json`:
+En el `package.json`, agregamos el script:
 
 ```json
 {
@@ -83,47 +83,47 @@ En el `package.json`:
 }
 ```
 
-### El test
+### 3. Escribir el test
 
 Por convención, el archivo de test lleva el mismo nombre que el archivo que prueba, con `.test.` en el medio:
 
 ```javascript
 // math.test.js
-import { describe, it, expect } from 'vitest';
-import { sumar } from './math.js';
+import { describe, it, expect } from "vitest";
+import { sumar } from "./math.js";
 
-describe('sumar', () => {
-
-  it('debería devolver 5 cuando sumamos 2 y 3', () => {
+describe("sumar", () => {
+  it("debería devolver 5 cuando sumamos 2 y 3", () => {
     const resultado = sumar(2, 3);
     expect(resultado).toBe(5);
   });
 
-  it('debería devolver 0 cuando sumamos números negativos y positivos iguales', () => {
+  it("debería devolver 0 cuando sumamos números negativos y positivos iguales", () => {
     const resultado = sumar(-5, 5);
     expect(resultado).toBe(0);
   });
 
-  it('debería sumar correctamente dos números negativos', () => {
+  it("debería sumar correctamente dos números negativos", () => {
     const resultado = sumar(-2, -3);
     expect(resultado).toBe(-5);
   });
-
 });
 ```
 
-### ¿Qué significa cada parte?
+### 4. Entender cada parte
 
 **`describe('sumar', () => { ... })`**
-Agrupa todos los tests relacionados a una misma unidad. No es obligatorio, pero hace que el código de tests sea más ordenado y fácil de navegar.
+Agrupa todos los tests relacionados a una misma unidad. No es obligatorio, pero hace que el código sea más ordenado y fácil de navegar.
 
 **`it('debería devolver 5...', () => { ... })`**
-Define una prueba individual. El primer argumento es una descripción en lenguaje natural de qué debería ocurrir. Empezar con *"debería..."* no es solo estilo: hace que cuando un test falle, el mensaje de error sea inmediatamente legible. *"sumar debería devolver 5 cuando sumamos 2 y 3"* nos dice exactamente qué falló sin necesidad de leer el código.
+Define una prueba individual. El primer argumento es una descripción en lenguaje natural de qué debería ocurrir. Empezar con _"debería..."_ no es solo estilo: hace que cuando un test falle, el mensaje de error sea inmediatamente legible. _"sumar debería devolver 5 cuando sumamos 2 y 3"_ nos dice exactamente qué falló sin necesidad de leer el código.
+
+> En otros frameworks como Jest, `it` y `test` son intercambiables. Si venís de ese mundo, es lo mismo.
 
 **`expect(resultado).toBe(5)`**
-El corazón del test. Si `resultado` es 5, el test pasa. Si es cualquier otra cosa, falla. `.toBe()` es uno de los muchos *matchers* disponibles; con el tiempo vamos a conocer otros como `.toEqual()`, `.toBeTruthy()` o `.toContain()`.
+El corazón del test. Si `resultado` es 5, el test pasa. Si es cualquier otra cosa, falla. `.toBe()` es uno de los muchos _matchers_ disponibles; con el tiempo vamos a conocer otros como `.toEqual()`, `.toBeTruthy()` o `.toContain()`.
 
-### Resultado
+### 5. Correr los tests
 
 ```bash
 npm test
@@ -138,9 +138,11 @@ Test Files  1 passed (1)
 Tests       3 passed (3)
 ```
 
+Tres tests, tres resultados verdes. Ya estamos testeando.
+
 ---
 
-## Cuando el test falla — y por qué eso es algo bueno
+## Cuando el test falla — y por qué eso es bueno
 
 Un test que falla no es un error del sistema. Es el sistema funcionando exactamente como fue diseñado.
 
@@ -169,17 +171,20 @@ Tests       1 failed | 2 passed (3)
 
 Sabemos qué test falló, cuál era el resultado esperado y cuál fue el recibido. Sin revisar toda la aplicación, sin hacer clic en diez pantallas. El test nos lleva directo al problema.
 
-Ese es el valor real del testing: **no nos avisa solo cuando las cosas funcionan, sino también cuando dejan de funcionar**.
+Un test que falla es feedback positivo: te está ahorrando minutos (o horas) de debugging manual. Ese es el valor real del testing: **no nos avisa solo cuando las cosas funcionan, sino también cuando dejan de funcionar**.
 
 ---
 
-## Errores comunes al empezar: los tropiezos de siempre
+## Errores comunes al empezar
 
 **Querer testear todo de una sola vez.**
 El primer impulso suele ser cubrir todo el proyecto de una vez. El resultado casi siempre es el mismo: bloqueo total y ningún test escrito. Vale más un test real que diez planificados.
 
 **Escribir tests que siempre pasan.**
 Un test demasiado permisivo no protege nada. Una buena práctica es verificar que el test también falla cuando el código está mal, no solo que pasa cuando está bien.
+
+**Olvidar los imports.**
+Uno de los errores más confusos al principio: el test falla con un error raro y resulta que nos olvidamos de importar la función o el módulo que queríamos probar. Siempre verificá que el `import` esté correcto antes de buscar el bug en otra parte.
 
 **No ejecutar los tests después de cada cambio.**
 Los tests son útiles solo si los corremos. Incorporar `npm test` como parte del flujo de trabajo es tan importante como escribirlos.
@@ -189,7 +194,7 @@ Encontrar el error en la terminal, antes de que llegue a producción, es exactam
 
 ---
 
-## Conclusión: la red de seguridad que no sabías que necesitabas
+## Conclusión
 
 Hay un cambio que ocurre cuando empezamos a escribir tests y que no es fácil de anticipar: **dejamos de tenerle miedo a modificar nuestro propio código**.
 
@@ -197,8 +202,4 @@ Tocar una función que "ya funcionaba" generaba cierta ansiedad. ¿Y si rompemos
 
 Los developers que escriben tests no lo hacen porque sean más disciplinados. Lo hacen porque en algún momento sufrieron lo suficiente sin ellos.
 
-Una función, un archivo de test, tres líneas. `expect`, `toBe`, un resultado esperado. Eso es suficiente para empezar.
-
----
-
-*¿Tenés dudas o querés que profundice en algún tema? Dejame un comentario. Esto recién empieza.*
+Una función, un archivo de test, tres líneas. `expect`, `toBe`, un resultado esperado. Eso es suficiente para empezar. Y si Vitest no te convence, podés probar con **Jest** o **Mocha** — la idea es la misma.
